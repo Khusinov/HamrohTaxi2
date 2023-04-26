@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Hamroh Taxi</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hamroh">Hamroh</string>
+    <string name="taxi">Taxi</string>
+    <string name="kirish">Kirish</string>
+    <string name="davlat_raqami">Davlat raqami</string>
+    <string name="image">image</string>
+    <string name="avtomobil_qo_shish">Avtomobil qo\'shish</string>
+    <string name="_90m705ca">90M705CA</string>
+    <string name="mashina_turi">Mashina turi</string>
+    <string name="nexia_2">Nexia 2</string>
+    <string name="ro_yhatdan_o_tish">Ro\'yhatdan o\'tish</string>
+    <string name="orqaga_qaytish">Orqaga qaytish</string>
+    <string name="my_address">My Address</string>
+    <string name="locations_and_payment">Locations and payment</string>
+    <string name="my_balance">My balance</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="order">Order</string>
+    <string name="account">Account</string>
+    <string name="chat">Chat</string>
+    <string name="message">Message</string>
+</resources>
