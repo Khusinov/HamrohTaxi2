@@ -14,6 +14,6 @@ data class User(
     val name: String? = null,
     val phone_number: String? = null,
     val user_role: Int = 0,
-    val groups: Boolean? = false,
-    val user_permissions: Boolean? = false
+    val groups: Any? = null,
+    val user_permissions: Any? = null
 )

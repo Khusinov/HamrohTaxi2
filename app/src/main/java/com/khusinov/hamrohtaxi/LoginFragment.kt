@@ -1,11 +1,13 @@
 package com.khusinov.hamrohtaxi
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import com.khusinov.hamrohtaxi.databinding.FragmentLoginBinding
 import com.khusinov.hamrohtaxi.models.AuthLogin
@@ -28,20 +30,29 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private fun setupUI() {
         binding.apply {
 
+            val sharedPref = context?.getSharedPreferences("HamrohTaxi", Context.MODE_PRIVATE)
+            val editor = sharedPref?.edit()
 
             loginBtn.setOnClickListener {
 
-                val phone = phoneEt.text.toString()
+                val phone = "+998" + phoneEt.text.toString()
                 val password = passwordEt.text.toString()
 
                 val authLogin = AuthLogin(phone, password)
 
-                Common.retrofitServices.login(authLogin).enqueue(object : Callback<LoginResponse>{
+
+                Common.retrofitServices.login(authLogin).enqueue(object : Callback<LoginResponse> {
                     override fun onResponse(
                         call: Call<LoginResponse>,
                         response: Response<LoginResponse>
                     ) {
                         Log.d(TAG, "onResponse: ${response.message()} ")
+                        if (response.isSuccessful && response.body()?.access != null) {
+                            editor?.putString("access", response.body()?.access)
+                            editor?.apply()
+
+                            findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                        }
                     }
 
                     override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
