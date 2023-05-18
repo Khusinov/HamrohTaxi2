@@ -33,6 +33,10 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             val sharedPref = context?.getSharedPreferences("HamrohTaxi", Context.MODE_PRIVATE)
             val editor = sharedPref?.edit()
 
+            registerTv.setOnClickListener {
+                findNavController().navigate()
+            }
+
             loginBtn.setOnClickListener {
 
                 val phone = "+998" + phoneEt.text.toString()
