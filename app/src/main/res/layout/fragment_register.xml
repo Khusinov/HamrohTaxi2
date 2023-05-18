@@ -108,7 +108,7 @@
             app:prefixTextColor="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/password_et1"
+                android:id="@+id/phoneNumberEt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="phone"
@@ -143,31 +143,31 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/password_input3"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="24dp"
-            android:hint="Takroriy parol"
-            app:boxStrokeColor="@color/black"
-            app:endIconMode="clear_text"
-            app:endIconTint="@color/colorSecondary"
-            app:expandedHintEnabled="false"
-            app:hintTextColor="@color/black"
-            app:prefixTextColor="@color/black">
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            android:id="@+id/password_input3"-->
+<!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="24dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:layout_marginEnd="24dp"-->
+<!--            android:hint="Takroriy parol"-->
+<!--            app:boxStrokeColor="@color/black"-->
+<!--            app:endIconMode="clear_text"-->
+<!--            app:endIconTint="@color/colorSecondary"-->
+<!--            app:expandedHintEnabled="false"-->
+<!--            app:hintTextColor="@color/black"-->
+<!--            app:prefixTextColor="@color/black">-->
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/password_et"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="phone"
-                android:padding="16dp"
-                android:textColor="@color/black" />
+<!--            <com.google.android.material.textfield.TextInputEditText-->
+<!--                android:id="@+id/password_et"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:inputType="phone"-->
+<!--                android:padding="16dp"-->
+<!--                android:textColor="@color/black" />-->
 
-        </com.google.android.material.textfield.TextInputLayout>
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
 
         <RadioGroup
             android:layout_width="wrap_content"
@@ -180,6 +180,7 @@
                 android:id="@+id/passanger"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:checked="true"
                 android:layout_margin="8dp"
                 android:text="Yo'lovchi" />
 
@@ -193,7 +194,7 @@
 
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_add_to_cart"
+            android:id="@+id/btn_register"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_gravity="center"
@@ -222,6 +223,7 @@
                 android:src="@drawable/baseline_login_24" />
 
             <TextView
+                android:id="@+id/loginButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"

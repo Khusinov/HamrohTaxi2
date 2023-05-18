@@ -1,6 +1,7 @@
 package com.khusinov.hamrohtaxi
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -21,6 +22,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private val binding by viewBinding { FragmentLoginBinding.bind(it) }
     private val TAG = "LoginFragment"
+    var sharedPreferences: SharedPreferences? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,7 +36,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             val editor = sharedPref?.edit()
 
             registerTv.setOnClickListener {
-                findNavController().navigate()
+                findNavController().navigate(R.id.action_loginFragment_to_registerFragment2)
             }
 
             loginBtn.setOnClickListener {
