@@ -133,7 +133,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_add_to_cart"
+        android:id="@+id/saveBtn"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_gravity="center"
@@ -149,22 +149,6 @@
         android:textStyle="bold"
         app:cornerRadius="10dp" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_back"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="44dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/colorSecondary"
-        android:gravity="center"
-        android:text="@string/orqaga_qaytish"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:cornerRadius="10dp" />
 
 
 </LinearLayout>
