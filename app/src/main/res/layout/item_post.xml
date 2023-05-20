@@ -9,7 +9,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:padding="2dp"
-        android:backgroundTint="#E6E9F2"
+        android:backgroundTint="#DBFEF8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
@@ -20,8 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingHorizontal="20dp"
-            android:paddingVertical="8dp">
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="6dp">
 
             <LinearLayout style="@style/ll1"
                 android:layout_marginTop="8dp">
@@ -33,6 +33,7 @@
                 <TextView
                     android:id="@+id/name"
                     style="@style/textView"
+                    android:textStyle="bold"
                     android:text="Doniyor"
                     android:textSize="22sp" />
 
@@ -46,12 +47,29 @@
 
                 <TextView
                     style="@style/textView"
-                    android:text="Yo'nalish:" />
+                    android:text="Qayerdan:" />
 
                 <TextView
-                    android:id="@+id/location"
+                    android:id="@+id/locationFrom"
                     style="@style/textView"
-                    android:text="Hazorasp-Urganch" />
+                    android:text="Hazorasp-Xorazm" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/ll1">
+
+                <ImageView
+                    style="@style/imageView"
+                    android:src="@drawable/ic_location" />
+
+                <TextView
+                    style="@style/textView"
+                    android:text="Qayerga:" />
+
+                <TextView
+                    android:id="@+id/locationTo"
+                    style="@style/textView"
+                    android:text="Xatirchi-Navoiy" />
 
             </LinearLayout>
 
@@ -68,6 +86,7 @@
                 <TextView
                     android:id="@+id/time"
                     style="@style/textView"
+                    android:textSize="18sp"
                     android:text="29.03.2023 8:00" />
 
             </LinearLayout>
@@ -110,10 +129,14 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/postedTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textSize="16sp"
+                    android:layout_gravity="bottom"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@color/purple_500"
                     android:text="28.03.2023" />
 
                 <View
@@ -126,7 +149,7 @@
                     android:layout_width="140dp"
                     android:layout_height="48dp"
                     android:layout_gravity="center"
-                    android:backgroundTint="@color/colorSecondary"
+                    android:backgroundTint="@color/purple_500"
                     android:gravity="center"
                     android:text="Hamroh bo'lish"
                     android:textAllCaps="false"
