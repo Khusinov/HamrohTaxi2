@@ -18,6 +18,11 @@ interface RetrofitService {
     @POST("cars/")
     fun createCar(@Body car: Car, @Header("Authorization") token: String):Call<CarResponse>
 
+    @GET("posts-list/")
+    fun getAllPosts():Call<List<Post>>
+
+
+
 
 
 
