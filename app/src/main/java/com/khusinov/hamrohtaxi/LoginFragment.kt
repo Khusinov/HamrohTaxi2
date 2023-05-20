@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import com.khusinov.hamrohtaxi.databinding.FragmentLoginBinding
@@ -57,18 +58,23 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                             editor?.putString("access", response.body()?.access)
                             editor?.apply()
 
+                            Toast.makeText(requireContext(), "Muvaffaqqiyatli ", Toast.LENGTH_SHORT).show()
                             findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
                         }
                     }
 
                     override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                         Log.d(TAG, "onFailure: ${t.message}")
+                        Toast.makeText(
+                            requireContext(),
+                            "Foydalanuvchi topilmadi. Qayta tekshiring.",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
 
                 })
 
             }
-
 
         }
 

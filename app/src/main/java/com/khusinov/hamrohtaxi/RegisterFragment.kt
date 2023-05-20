@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.khusinov.hamrohtaxi.databinding.FragmentRegisterBinding
 import com.khusinov.hamrohtaxi.models.LoginResponse
@@ -58,6 +59,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                         if (driver) {
                             findNavController().navigate(R.id.action_registerFragment2_to_registerCarFragment2)
                         } else {
+                            Toast.makeText(requireContext(), "Muvaffaqqiyatli ro'yhatdan o'tdi", Toast.LENGTH_SHORT).show()
                             findNavController().navigate(R.id.action_registerFragment2_to_homeFragment)
                         }
 
@@ -65,15 +67,10 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
 
                     override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                         Log.d(TAG, "onFailure: ${t.message}")
+                        Toast.makeText(requireContext(), "Nimadur xato", Toast.LENGTH_SHORT).show()
                     }
 
                 })
-
-                if (passanger) {
-
-                } else {
-
-                }
 
             }
 
