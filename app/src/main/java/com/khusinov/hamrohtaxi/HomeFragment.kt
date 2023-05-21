@@ -93,7 +93,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             val adapter = PostAdapter()
 
             var recyclerView = rv
-
             rv.adapter = adapter
             adapter.submitList(postList)
 
