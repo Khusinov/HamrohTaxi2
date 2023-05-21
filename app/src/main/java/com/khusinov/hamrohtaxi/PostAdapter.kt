@@ -15,9 +15,8 @@ class PostAdapter() : RecyclerView.Adapter<PostAdapter.PartOneViewHolder>() {
 
     private val dif = AsyncListDiffer(this, ITEM_DIFF)
 
-    //    var onClick: ((Flower) -> Unit)? = null
-//    var onClick2: ((Flower) -> Unit)? = null
-//    var onClick3: ((Flower) -> Unit)? = null
+       var onClick: ((Post) -> Unit)? = null
+
     private val TAG = "PostAdapter"
 
     inner class PartOneViewHolder(private val binding: ItemPostBinding) :
@@ -46,6 +45,10 @@ class PostAdapter() : RecyclerView.Adapter<PostAdapter.PartOneViewHolder>() {
                 time.text = postCurrent.go_time
                 postedTime.text = postCurrent.posted_time
                 personCount.text = postCurrent.count.toString()
+
+                btnBePartner.setOnClickListener {
+                    onClick?.invoke(postCurrent)
+                }
 
 
                 binding.root.setOnClickListener {

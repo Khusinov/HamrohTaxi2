@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.khusinov.hamrohtaxi.databinding.FragmentHomeBinding
 import com.khusinov.hamrohtaxi.models.Post
 import com.khusinov.hamrohtaxi.network.Common
@@ -89,10 +91,17 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
 
             val adapter = PostAdapter()
+
             var recyclerView = rv
 
             rv.adapter = adapter
             adapter.submitList(postList)
+
+            adapter.onClick = {
+
+                findNavController().navigate(R.id.action_homeFragment_to_phoneNumberFragment)
+
+            }
         }
     }
 }

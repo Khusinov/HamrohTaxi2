@@ -145,7 +145,7 @@
                     android:layout_weight="1"/>
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_add_to_cart"
+                    android:id="@+id/btn_be_partner"
                     android:layout_width="140dp"
                     android:layout_height="48dp"
                     android:layout_gravity="center"
