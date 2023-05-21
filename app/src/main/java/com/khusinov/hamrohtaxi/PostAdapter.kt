@@ -27,15 +27,15 @@ class PostAdapter() : RecyclerView.Adapter<PostAdapter.PartOneViewHolder>() {
 
             binding.apply {
 
-                var locationFrom1 = postCurrent.from_location
-                var index = locationFrom1.indexOf("-")
+                val locationFrom1 = postCurrent.from_location
+                val index = locationFrom1.indexOf("-")
 
-                var locationFrom2 = locationFrom1.substring(index + 1)
+                val locationFrom2 = locationFrom1.substring(index + 1)
                 Log.d(TAG, "bind: location $locationFrom2")
 
-                var locationTo1 = postCurrent.to_location
-                var index2 = locationTo1.indexOf("-")
-                var locationTo2 = locationTo1.substring(index2+1)
+                val locationTo1 = postCurrent.to_location
+                val index2 = locationTo1.indexOf("-")
+                val locationTo2 = locationTo1.substring(index2+1)
                 Log.d(TAG, "bind: location $locationTo2")
 
 
