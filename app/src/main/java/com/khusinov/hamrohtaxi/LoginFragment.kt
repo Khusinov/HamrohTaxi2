@@ -56,6 +56,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                         Log.d(TAG, "onResponse: ${response.message()} ")
                         if (response.isSuccessful && response.body()?.access != null) {
                             editor?.putString("access", response.body()?.access)
+                            editor?.putString("login", "logged")
                             editor?.apply()
 
                             Toast.makeText(requireContext(), "Muvaffaqqiyatli ", Toast.LENGTH_SHORT).show()

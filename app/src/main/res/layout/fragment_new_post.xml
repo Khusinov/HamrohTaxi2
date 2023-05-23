@@ -91,29 +91,30 @@
             android:layout_height="56dp"
             android:backgroundTint="#EAE9E9"
             app:cardCornerRadius="10dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="Sana"
-                android:textSize="18sp"
-                android:layout_gravity="center"/>
+                android:textSize="18sp" />
 
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/time"
             android:layout_width="160dp"
-            android:layout_marginStart="18dp"
             android:layout_height="56dp"
+            android:layout_marginStart="18dp"
             android:backgroundTint="#EAE9E9"
             app:cardCornerRadius="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="Soat"
-                android:textSize="18sp"
-                android:layout_gravity="center"/>
+                android:textSize="18sp" />
 
         </androidx.cardview.widget.CardView>
 
@@ -145,9 +146,9 @@
             <EditText
                 android:id="@+id/comment"
                 android:layout_width="match_parent"
-                android:hint="Izoh"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="2dp"
-                android:layout_height="wrap_content"/>
+                android:hint="Izoh" />
 
         </androidx.cardview.widget.CardView>
 
@@ -179,9 +180,10 @@
             <EditText
                 android:id="@+id/numberOfPeople"
                 android:layout_width="match_parent"
-                android:hint="Odamlar soni"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="2dp"
-                android:layout_height="wrap_content"/>
+                android:hint="Odamlar soni"
+                android:inputType="number" />
 
         </androidx.cardview.widget.CardView>
 
@@ -204,10 +206,6 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:cornerRadius="10dp" />
-
-
-
-
 
 
 </LinearLayout>
