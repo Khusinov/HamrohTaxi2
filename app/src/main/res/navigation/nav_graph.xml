@@ -15,6 +15,7 @@
             app:destination="@id/phoneNumberFragment" />
     </fragment>
     <fragment
+
         android:id="@+id/profileFragment"
         android:name="com.khusinov.hamrohtaxi.ProfileFragment"
         android:label="fragment_profile"
