@@ -24,7 +24,11 @@
         android:id="@+id/chatFragment"
         android:name="com.khusinov.hamrohtaxi.ChatFragment"
         android:label="fragment_chat"
-        tools:layout="@layout/fragment_chat" />
+        tools:layout="@layout/fragment_chat" >
+        <action
+            android:id="@+id/action_chatFragment_to_newPostFragment"
+            app:destination="@id/newPostFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.khusinov.hamrohtaxi.LoginFragment"
@@ -73,4 +77,13 @@
         android:name="com.khusinov.hamrohtaxi.PhoneNumberFragment"
         android:label="fragment_phone_number"
         tools:layout="@layout/fragment_phone_number" />
+    <fragment
+        android:id="@+id/newPostFragment"
+        android:name="com.khusinov.hamrohtaxi.NewPostFragment"
+        android:label="fragment_new_post"
+        tools:layout="@layout/fragment_new_post" >
+        <action
+            android:id="@+id/action_newPostFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
 </navigation>

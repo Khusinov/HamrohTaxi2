@@ -1,14 +1,213 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="12dp"
     tools:context=".NewPostFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="E'loningiz haqida malumot bering"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
-</FrameLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Yo'nalishni kiriting*"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Qayerdan:"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <Spinner
+            android:id="@+id/locationFrom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="0dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Qayerga:"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <Spinner
+            android:id="@+id/locationTo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="20dp"
+        android:text="Qachon yo'lga chiqmoqchisiz*"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/date"
+            android:layout_width="160dp"
+            android:layout_height="56dp"
+            android:backgroundTint="#EAE9E9"
+            app:cardCornerRadius="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sana"
+                android:textSize="18sp"
+                android:layout_gravity="center"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/time"
+            android:layout_width="160dp"
+            android:layout_marginStart="18dp"
+            android:layout_height="56dp"
+            android:backgroundTint="#EAE9E9"
+            app:cardCornerRadius="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Soat"
+                android:textSize="18sp"
+                android:layout_gravity="center"/>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="20dp"
+        android:text="Izohingizni qoldirishingiz mumkin"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="19dp"
+            android:backgroundTint="#EAE9E9"
+            app:cardCornerRadius="10dp">
+
+            <EditText
+                android:id="@+id/comment"
+                android:layout_width="match_parent"
+                android:hint="Izoh"
+                android:layout_marginHorizontal="2dp"
+                android:layout_height="wrap_content"/>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="20dp"
+        android:text="Qancha odam kerak (yoki bor)"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="19dp"
+            android:backgroundTint="#EAE9E9"
+            app:cardCornerRadius="10dp">
+
+            <EditText
+                android:id="@+id/numberOfPeople"
+                android:layout_width="match_parent"
+                android:hint="Odamlar soni"
+                android:layout_marginHorizontal="2dp"
+                android:layout_height="wrap_content"/>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/postBtn"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="46dp"
+        android:layout_marginBottom="26dp"
+        android:backgroundTint="@color/colorSecondary"
+        android:gravity="center"
+        android:text="E'lonni joylash"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="10dp" />
+
+
+
+
+
+
+</LinearLayout>
