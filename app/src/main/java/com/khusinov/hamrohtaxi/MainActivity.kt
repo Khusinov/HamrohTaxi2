@@ -37,9 +37,15 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.bottomNavigationView.setOnItemSelectedListener {
+
+            sharedPreferences = this.getSharedPreferences("HamrohTaxi", 0)
+            val status = sharedPreferences?.getString("login", "").toString()
+
+            Log.d(TAG, "onCreate: $status ")
+
             when (it.itemId) {
                 R.id.chatFragment -> {
-                    if (status == "logged") {
+                    if (status == "logged1") {
                         navController.navigate(R.id.chatFragment)
                     } else {
                         navController.navigate(R.id.loginFragment)
@@ -47,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.homeFragment -> {
-                    if (status == "logged") {
+                    if (status == "logged1") {
                         navController.navigate(R.id.homeFragment)
                     } else {
                         navController.navigate(R.id.loginFragment)
@@ -56,7 +62,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.searchFragment -> {
-                    if (status == "logged") {
+                    if (status == "logged1") {
                         navController.navigate(R.id.searchFragment)
                     } else {
                         navController.navigate(R.id.loginFragment)
@@ -65,7 +71,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.profileFragment -> {
-                    if (status == "logged") {
+                    if (status == "logged1") {
                         navController.navigate(R.id.profileFragment)
                     } else {
                         navController.navigate(R.id.loginFragment)
