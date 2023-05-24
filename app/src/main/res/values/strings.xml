@@ -22,4 +22,5 @@
     <string name="account">Account</string>
     <string name="chat">Chat</string>
     <string name="message">Message</string>
+    <string name="selected_item">Selected</string>
 </resources>

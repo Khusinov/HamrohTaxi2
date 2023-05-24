@@ -35,6 +35,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
             val sharedPref = context?.getSharedPreferences("HamrohTaxi", Context.MODE_PRIVATE)
             val editor = sharedPref?.edit()
+            editor?.putString("login", "notLogged")
+            editor?.apply()
+
 
             registerTv.setOnClickListener {
                 findNavController().navigate(R.id.action_loginFragment_to_registerFragment2)

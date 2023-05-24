@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 
             when (it.itemId) {
                 R.id.chatFragment -> {
-                    if (status == "logged1") {
+                    if (status == "logged") {
                         navController.navigate(R.id.chatFragment)
                     } else {
                         navController.navigate(R.id.loginFragment)
@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.homeFragment -> {
-                    if (status == "logged1") {
+                    if (status == "logged") {
                         navController.navigate(R.id.homeFragment)
                     } else {
                         navController.navigate(R.id.loginFragment)
@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.searchFragment -> {
-                    if (status == "logged1") {
+                    if (status == "logged") {
                         navController.navigate(R.id.searchFragment)
                     } else {
                         navController.navigate(R.id.loginFragment)
@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.profileFragment -> {
-                    if (status == "logged1") {
+                    if (status == "logged") {
                         navController.navigate(R.id.profileFragment)
                     } else {
                         navController.navigate(R.id.loginFragment)

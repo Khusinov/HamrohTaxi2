@@ -21,6 +21,15 @@ interface RetrofitService {
     @GET("posts-list/")
     fun getAllPosts():Call<List<Post>>
 
+    @GET("regions-list/")
+    fun getRegions():Call<List<Region>>
+
+    @GET("districts-list/")
+    fun getDistricts():Call<List<District>>
+
+    @GET("posts/")
+    fun getMyPosts(@Header("Authorization") token: String):Call<MyPosts>
+
 
 
 

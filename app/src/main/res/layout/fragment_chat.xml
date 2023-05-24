@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".ChatFragment">
 
@@ -59,17 +60,29 @@
         <Button
             android:id="@+id/createNewPost"
             android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_height="wrap_content"
             android:text="+ E'lon yaratish"/>
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/noPostTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:visibility="visible"
+        android:text="Sizda e'lonlar mavjud emas." />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/item_chat"
-        android:layout_margin="20dp" />
-
+        android:visibility="gone"
+        android:layout_margin="16dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_post" />
 
 </LinearLayout>
