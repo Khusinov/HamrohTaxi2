@@ -1,5 +1,6 @@
 package com.khusinov.hamrohtaxi
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -7,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.khusinov.hamrohtaxi.adapter.MyPostAdapter
 import com.khusinov.hamrohtaxi.databinding.FragmentChatBinding
 import com.khusinov.hamrohtaxi.models.MyPosts
 import com.khusinov.hamrohtaxi.models.Post
@@ -20,6 +22,8 @@ class ChatFragment : Fragment(R.layout.fragment_chat) {
 
     private val binding by viewBinding { FragmentChatBinding.bind(it) }
     private val TAG = "ChatFragment"
+    private var sharedPreferences: SharedPreferences? = null
+    var tokenn = ""
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -37,7 +41,15 @@ class ChatFragment : Fragment(R.layout.fragment_chat) {
 
             val list = ArrayList<Post>()
 
-            Common.retrofitServices.getMyPosts("").enqueue(object : Callback<MyPosts> {
+            sharedPreferences = requireContext().getSharedPreferences("HamrohTaxi", 0)
+            var token = sharedPreferences?.getString("access", "").toString()
+
+            token = "Bearer $token"
+            tokenn = token
+
+            Log.d(TAG, "setupUI: token ${token.toString()}")
+
+            Common.retrofitServices.getMyPosts(token).enqueue(object : Callback<MyPosts> {
                 override fun onResponse(call: Call<MyPosts>, response: Response<MyPosts>) {
                     Log.d(TAG, "onResponse: $response")
                     if (response.isSuccessful && response.body()?.count != 0) {
@@ -68,11 +80,51 @@ class ChatFragment : Fragment(R.layout.fragment_chat) {
             noPostTv.visibility = View.GONE
             rv.visibility = View.VISIBLE
 
-            val adapter = PostAdapter()
+            val adapter = MyPostAdapter()
             val recyclerView = rv
 
             recyclerView.adapter = adapter
             adapter.submitList(postList!!)
+
+            adapter.onClick = {
+                // DELETE
+                Log.d(TAG, "callAdapter: post id ${it.id}")
+
+                Common.retrofitServices.deletePostById(it.id, tokenn).enqueue(object : Callback<Any> {
+                    override fun onResponse(call: Call<Any>, response: Response<Any>) {
+
+                    }
+
+                    override fun onFailure(call: Call<Any>, t: Throwable) {
+
+                    }
+                })
+
+
+
+
+
+//                    .enqueue(object : Callback<okhttp3.Response> {
+//                        override fun onResponse(
+//                            call: Call<okhttp3.Response>,
+//                            response: Response<okhttp3.Response>
+//                        ) {
+//
+//                            Log.d(TAG, "onResponse: ${response.message()}")
+//                            if (response.isSuccessful)
+//                                Log.d(TAG, "onResponse: Deleteddd")
+//                        }
+//
+//                        override fun onFailure(call: Call<okhttp3.Response>, t: Throwable) {
+//                            Log.d(TAG, "onFailure: ${t.message}")
+//                        }
+//
+//                    })
+            }
+            adapter.onClick2 = {
+                // EDIT
+                Log.d(TAG, "callAdapter: ${it.id}")
+            }
 
         }
 

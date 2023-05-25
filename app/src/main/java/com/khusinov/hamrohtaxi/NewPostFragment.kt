@@ -11,9 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.khusinov.hamrohtaxi.databinding.FragmentNewPostBinding
-import com.khusinov.hamrohtaxi.models.District
-import com.khusinov.hamrohtaxi.models.Post
-import com.khusinov.hamrohtaxi.models.Region
+import com.khusinov.hamrohtaxi.models.*
 import com.khusinov.hamrohtaxi.network.Common
 import retrofit2.Call
 import retrofit2.Callback
@@ -81,17 +79,38 @@ class NewPostFragment : Fragment(R.layout.fragment_new_post), DatePickerDialog.O
 
             postBtn.setOnClickListener {
 
-                var userRole = if(driver.isChecked) 1 else 0
+                var userRole = if (driver.isChecked) 1 else 0
                 var fromLocation = selectedDistrictFrom
                 var toLocation = selectedDistrictTo
-                var goTime = "${dateTV.text }: ${timeTv.text}"
+                var goTime = "$savedYear-$savedMonth-$savedDay $savedHour:$savedMinute"
                 var count = numberOfPeople.text.toString().toInt()
                 var price = price.text.toString()
                 var addition = comment.text.toString()
 
-                var post = Post(addition, count, fromLocation, goTime, "")
+                var post2 =
+                    Post2(addition, count, fromLocation, goTime, price, toLocation, userRole)
 
+                Log.d(TAG, "setupUI: ${post2.toString()}")
+                Log.d(TAG, "setupUI: $token")
 
+                Common.retrofitServices.createPost(post2, token).enqueue(object : Callback<Post3> {
+                    override fun onResponse(call: Call<Post3>, response: Response<Post3>) {
+
+                        Log.d(TAG, "onResponse: $response")
+                        Log.d(TAG, "onResponse: ${response.body()}")
+                        Log.d(TAG, "onResponse: ${response.message()}")
+
+                        if (response.isSuccessful) {
+                            Toast.makeText(requireContext(), "Post yaratildi", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<Post3>, t: Throwable) {
+                        Log.d(TAG, "onFailure: ${t.message}")
+                    }
+
+                })
             }
 
 

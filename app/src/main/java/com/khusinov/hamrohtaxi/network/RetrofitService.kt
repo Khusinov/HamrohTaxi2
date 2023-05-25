@@ -2,10 +2,7 @@ package com.khusinov.hamrohtaxi.network
 
 import com.khusinov.hamrohtaxi.models.*
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface RetrofitService {
 
@@ -29,6 +26,13 @@ interface RetrofitService {
 
     @GET("posts/")
     fun getMyPosts(@Header("Authorization") token: String):Call<MyPosts>
+
+    @POST("posts/")
+    fun createPost(@Body post2: Post2 , @Header("Authorization") token: String):Call<Post3>
+
+    @DELETE("posts/{id}/")
+    fun deletePostById(@Path("id") id:Int , @Header("Authorization") token: String):Call<retrofit2.Response<Any>>
+
 
 
 
