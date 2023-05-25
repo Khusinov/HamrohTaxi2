@@ -21,6 +21,8 @@ import retrofit2.Response
 class HomeFragment : Fragment(R.layout.fragment_home) {
     private val binding by viewBinding { FragmentHomeBinding.bind(it) }
     private val TAG = "HomeFragment"
+    var postsByDrivers = ArrayList<Post>()
+    var postsByPassengers = ArrayList<Post>()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupUI()
@@ -28,6 +30,16 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun setupUI() {
         binding.apply {
+
+            drivers.setOnCheckedChangeListener { buttonView, isChecked ->
+                if (isChecked)
+                    callAdapter(postsByDrivers)
+            }
+
+            passangers.setOnCheckedChangeListener { buttonView, isChecked ->
+                if (isChecked)
+                    callAdapter(postsByPassengers)
+            }
 
             val postList = ArrayList<Post>()
             Common.retrofitServices.getAllPosts().enqueue(object : Callback<List<Post>> {
@@ -37,6 +49,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     Log.d(TAG, "onResponse: posts ${response.body()}")
 
                     if (response.isSuccessful) {
+
+                        postsByDrivers.clear()
+                        postsByPassengers.clear()
 
                         val list = response.body()
                         if (list != null) {
@@ -64,12 +79,18 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                                     user,
                                     role
                                 )
-
-                                postList.add(post)
+                                if (role == 0)
+                                    postsByPassengers.add(post)
+                                if (role == 1)
+                                    postsByDrivers.add(post)
                             }
-                            callAdapter(postList)
+                            if (drivers.isChecked) {
+                                callAdapter(postsByDrivers)
+                            }
+                            if (passangers.isChecked) {
+                                callAdapter(postsByPassengers)
+                            }
                         }
-
 
                     }
 
@@ -81,7 +102,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 }
 
             })
-
 
         }
 
@@ -101,7 +121,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             adapter.onClick = {
 
 
-             //   findNavController().navigate(R.id.action_homeFragment_to_phoneNumberFragment)
+                //   findNavController().navigate(R.id.action_homeFragment_to_phoneNumberFragment)
                 val dialIntent = Intent(Intent.ACTION_DIAL)
                 dialIntent.data = Uri.parse("tel:" + it.user.phone_number)
                 startActivity(dialIntent)

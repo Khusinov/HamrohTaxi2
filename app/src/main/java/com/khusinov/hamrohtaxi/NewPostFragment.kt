@@ -1,6 +1,7 @@
 package com.khusinov.hamrohtaxi
 
 import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -8,9 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Toast
+import android.widget.*
 import com.khusinov.hamrohtaxi.databinding.FragmentNewPostBinding
 import com.khusinov.hamrohtaxi.models.District
 import com.khusinov.hamrohtaxi.models.Region
@@ -23,7 +22,8 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-class NewPostFragment : Fragment(R.layout.fragment_new_post) {
+class NewPostFragment : Fragment(R.layout.fragment_new_post), DatePickerDialog.OnDateSetListener,
+    TimePickerDialog.OnTimeSetListener {
     private val binding by viewBinding { FragmentNewPostBinding.bind(it) }
     private val TAG = "NewPostFragment"
     private var sharedPreferences: SharedPreferences? = null
@@ -38,6 +38,17 @@ class NewPostFragment : Fragment(R.layout.fragment_new_post) {
     private var selectedDistrictTo = ""
     private var regionId = 0
     private var districtId = 0
+    var day = 0
+    var month = 0
+    var year = 0
+    var hour = 0
+    var minute = 0
+    var savedDay = 0
+    var savedMonth = 0
+    var savedYear = 0
+    var savedHour = 0
+    var savedMinute = 0
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -47,6 +58,7 @@ class NewPostFragment : Fragment(R.layout.fragment_new_post) {
     private fun setupUI() {
         binding.apply {
 
+
             sharedPreferences = requireContext().getSharedPreferences("HamrohTaxi", 0)
             var token = sharedPreferences?.getString("access", "").toString()
 
@@ -55,23 +67,15 @@ class NewPostFragment : Fragment(R.layout.fragment_new_post) {
             Log.d(TAG, "setupUI: token ${token.toString()}")
 
             date.setOnClickListener {
-                Log.d(TAG, "setupUI: clicked")
-                var cal = Calendar.getInstance()
-                val year = 2023
-                val month = 5
-                val day = 0
-                val dpd = DatePickerDialog(requireContext(), DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
 
-                    cal.set(Calendar.YEAR, year)
-                    cal.set(Calendar.MONTH, monthOfYear)
-                    cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+                getDateTimeCalendar()
+                DatePickerDialog(requireContext(), this@NewPostFragment, year, month, day).show()
 
-                    val myFormat = "dd.MM.yyyy" // mention the format you need
-                    val sdf = SimpleDateFormat(myFormat, Locale.US)
-                    // Display Selected date in textbox
-                    Toast.makeText(requireContext(),sdf.format(cal.time), Toast.LENGTH_LONG).show()
+            }
 
-                }, year, month, day)
+            time.setOnClickListener {
+                getDateTimeCalendar()
+                TimePickerDialog(requireContext(), this@NewPostFragment, hour, minute, true).show()
             }
 
 
@@ -122,6 +126,15 @@ class NewPostFragment : Fragment(R.layout.fragment_new_post) {
 
     }
 
+    private fun getDateTimeCalendar() {
+        val cal: Calendar = Calendar.getInstance()
+        day = cal.get(Calendar.DAY_OF_MONTH)
+        month = cal.get(Calendar.MONTH)
+        year = cal.get(Calendar.YEAR)
+        hour = cal.get(Calendar.HOUR)
+        minute = cal.get(Calendar.MINUTE)
+    }
+
     private fun setupRegionSpinner(
         nameList: List<String>,
         regionIDs: ArrayList<Int>,
@@ -140,11 +153,6 @@ class NewPostFragment : Fragment(R.layout.fragment_new_post) {
             ) {
                 regionId = regionIDs[position]
                 selectedRegionFrom = nameList[position]
-                Toast.makeText(
-                    requireContext(),
-                    getString(R.string.selected_item) + " " + nameList[position],
-                    Toast.LENGTH_SHORT
-                ).show()
 
                 callDistrictByID(regionId)
 
@@ -174,11 +182,6 @@ class NewPostFragment : Fragment(R.layout.fragment_new_post) {
             ) {
                 regionId = regionIDs[position]
                 selectedRegionTo = nameList[position]
-                Toast.makeText(
-                    requireContext(),
-                    getString(R.string.selected_item) + " " + nameList[position],
-                    Toast.LENGTH_SHORT
-                ).show()
 
                 callDistrictByID2(regionId)
 
@@ -273,5 +276,20 @@ class NewPostFragment : Fragment(R.layout.fragment_new_post) {
                 // Code to perform some action when nothing is selected
             }
         }
+    }
+
+    override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
+        savedDay = dayOfMonth
+        savedMonth = month
+        savedYear = year
+
+        binding.dateTV.text = "$savedDay.$savedMonth.$savedYear"
+    }
+
+    override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
+        savedHour = hourOfDay
+        savedMinute = minute
+
+        binding.timeTv.text = "$savedHour:$savedMinute"
     }
 }
