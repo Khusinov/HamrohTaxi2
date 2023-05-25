@@ -89,37 +89,6 @@ class ChatFragment : Fragment(R.layout.fragment_chat) {
             adapter.onClick = {
                 // DELETE
                 Log.d(TAG, "callAdapter: post id ${it.id}")
-
-                Common.retrofitServices.deletePostById(it.id, tokenn).enqueue(object : Callback<Any> {
-                    override fun onResponse(call: Call<Any>, response: Response<Any>) {
-
-                    }
-
-                    override fun onFailure(call: Call<Any>, t: Throwable) {
-
-                    }
-                })
-
-
-
-
-
-//                    .enqueue(object : Callback<okhttp3.Response> {
-//                        override fun onResponse(
-//                            call: Call<okhttp3.Response>,
-//                            response: Response<okhttp3.Response>
-//                        ) {
-//
-//                            Log.d(TAG, "onResponse: ${response.message()}")
-//                            if (response.isSuccessful)
-//                                Log.d(TAG, "onResponse: Deleteddd")
-//                        }
-//
-//                        override fun onFailure(call: Call<okhttp3.Response>, t: Throwable) {
-//                            Log.d(TAG, "onFailure: ${t.message}")
-//                        }
-//
-//                    })
             }
             adapter.onClick2 = {
                 // EDIT
