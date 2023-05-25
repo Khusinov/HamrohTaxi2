@@ -15,7 +15,7 @@ class PostAdapter() : RecyclerView.Adapter<PostAdapter.PartOneViewHolder>() {
 
     private val dif = AsyncListDiffer(this, ITEM_DIFF)
 
-       var onClick: ((Post) -> Unit)? = null
+    var onClick: ((Post) -> Unit)? = null
 
     private val TAG = "PostAdapter"
 
@@ -35,16 +35,26 @@ class PostAdapter() : RecyclerView.Adapter<PostAdapter.PartOneViewHolder>() {
 
                 val locationTo1 = postCurrent.to_location
                 val index2 = locationTo1.indexOf("-")
-                val locationTo2 = locationTo1.substring(index2+1)
+                val locationTo2 = locationTo1.substring(index2 + 1)
                 Log.d(TAG, "bind: location $locationTo2")
 
 
                 name.text = postCurrent.user.name
                 locationFrom.text = locationFrom2
-                locationTo.text =locationTo2
+                locationTo.text = locationTo2
                 time.text = postCurrent.go_time
                 postedTime.text = postCurrent.posted_time
+                comment.text = postCurrent.addition
+                price.text = postCurrent.price
                 personCount.text = postCurrent.count.toString()
+
+                if (postCurrent.user_role == 0) {
+                    // passanger
+                    hamrohKerakTv.text = "ta yo'lovchi"
+                }
+                if (postCurrent.user_role == 1) {
+                    hamrohKerakTv.text = "ta hamroh kerak"
+                }
 
                 btnBePartner.setOnClickListener {
                     onClick?.invoke(postCurrent)

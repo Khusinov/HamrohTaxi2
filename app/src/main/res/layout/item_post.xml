@@ -91,7 +91,6 @@
 
             </LinearLayout>
 
-
             <LinearLayout style="@style/ll1">
 
                 <ImageView
@@ -99,9 +98,31 @@
                     android:src="@drawable/baseline_person_24" />
 
                 <TextView
-                    android:id="@+id/locationMore"
                     style="@style/textView"
-                    android:text="Botirlar mahallasidan" />
+                    android:text="Narxi:" />
+
+                <TextView
+                    android:id="@+id/price"
+                    style="@style/textView"
+                    android:textSize="18sp"
+                    android:text="25000" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/llComment"
+                android:visibility="gone"
+                style="@style/ll1">
+
+                <ImageView
+                    style="@style/imageView"
+                    android:src="@drawable/baseline_person_24" />
+
+                <TextView
+                    android:id="@+id/comment"
+                    style="@style/textView"
+                    android:text="izoh" />
 
             </LinearLayout>
 
@@ -117,6 +138,7 @@
                     android:text="3" />
 
                 <TextView
+                    android:id="@+id/hamrohKerakTv"
                     style="@style/textView"
                     android:text="ta hamroh kerak" />
 

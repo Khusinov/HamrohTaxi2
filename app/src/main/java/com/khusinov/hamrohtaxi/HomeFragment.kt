@@ -66,6 +66,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                                 val count = i.count
                                 val role = i.user_role
                                 val status = i.status
+                                val price = i.price
 
                                 val post = Post(
                                     addition,
@@ -77,7 +78,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                                     status,
                                     to,
                                     user,
-                                    role
+                                    role,
+                                    price
                                 )
                                 if (role == 0)
                                     postsByPassengers.add(post)

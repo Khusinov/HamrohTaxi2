@@ -10,5 +10,6 @@ data class Post(
     val status: Int,
     val to_location: String,
     val user: UserX,
-    val user_role: Int
+    val user_role: Int,
+    val price:String
 )

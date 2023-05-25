@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.*
 import com.khusinov.hamrohtaxi.databinding.FragmentNewPostBinding
 import com.khusinov.hamrohtaxi.models.District
+import com.khusinov.hamrohtaxi.models.Post
 import com.khusinov.hamrohtaxi.models.Region
 import com.khusinov.hamrohtaxi.network.Common
 import retrofit2.Call
@@ -76,6 +77,21 @@ class NewPostFragment : Fragment(R.layout.fragment_new_post), DatePickerDialog.O
             time.setOnClickListener {
                 getDateTimeCalendar()
                 TimePickerDialog(requireContext(), this@NewPostFragment, hour, minute, true).show()
+            }
+
+            postBtn.setOnClickListener {
+
+                var userRole = if(driver.isChecked) 1 else 0
+                var fromLocation = selectedDistrictFrom
+                var toLocation = selectedDistrictTo
+                var goTime = "${dateTV.text }: ${timeTv.text}"
+                var count = numberOfPeople.text.toString().toInt()
+                var price = price.text.toString()
+                var addition = comment.text.toString()
+
+                var post = Post(addition, count, fromLocation, goTime, "")
+
+
             }
 
 
