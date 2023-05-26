@@ -88,6 +88,7 @@ class ChatFragment : Fragment(R.layout.fragment_chat) {
 
             adapter.onClick = {
                 // DELETE
+
                 Log.d(TAG, "callAdapter: post id ${it.id}")
             }
             adapter.onClick2 = {
