@@ -94,6 +94,7 @@ class ChatFragment : Fragment(R.layout.fragment_chat) {
             adapter.onClick2 = {
                 // EDIT
 
+
                 Log.d(TAG, "callAdapter: ${it.id}")
             }
 
