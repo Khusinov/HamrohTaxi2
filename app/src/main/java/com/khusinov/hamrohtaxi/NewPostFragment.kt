@@ -82,7 +82,8 @@ class NewPostFragment : Fragment(R.layout.fragment_new_post), DatePickerDialog.O
                 var userRole = if (driver.isChecked) 1 else 0
                 var fromLocation = selectedDistrictFrom
                 var toLocation = selectedDistrictTo
-                var goTime = "$savedYear-$savedMonth-$savedDay $savedHour:$savedMinute"
+                // 2023-6-24T05:09:54.995Z  time format
+                var goTime = "$savedYear-$savedMonth-${savedDay} $savedHour:${savedMinute}"
                 var count = numberOfPeople.text.toString().toInt()
                 var price = price.text.toString()
                 var addition = comment.text.toString()
