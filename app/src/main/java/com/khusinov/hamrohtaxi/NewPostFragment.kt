@@ -108,6 +108,7 @@ class NewPostFragment : Fragment(R.layout.fragment_new_post), DatePickerDialog.O
 
                     override fun onFailure(call: Call<Post3>, t: Throwable) {
                         Log.d(TAG, "onFailure: ${t.message}")
+                        Toast.makeText(requireContext(), "Internetni tekshiring", Toast.LENGTH_SHORT).show()
                     }
 
                 })

@@ -113,6 +113,8 @@ class ChatFragment : Fragment(R.layout.fragment_chat) {
                     }
 
                 })
+
+                adapter.notifyItemRemoved(postList.size)
             }
             adapter.onClick2 = {
                 // EDIT
