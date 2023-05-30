@@ -7,9 +7,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.khusinov.hamrohtaxi.adapter.MyPostAdapter
 import com.khusinov.hamrohtaxi.databinding.FragmentChatBinding
+import com.khusinov.hamrohtaxi.models.DeleteResponse
 import com.khusinov.hamrohtaxi.models.MyPosts
 import com.khusinov.hamrohtaxi.models.Post
 import com.khusinov.hamrohtaxi.network.Common
@@ -55,7 +57,7 @@ class ChatFragment : Fragment(R.layout.fragment_chat) {
                     if (response.isSuccessful && response.body()?.count != 0) {
 
                         val postList = response.body()?.results
-                        callAdapter(postList)
+                        callAdapter(postList )
 
                     }
 
@@ -90,6 +92,27 @@ class ChatFragment : Fragment(R.layout.fragment_chat) {
                 // DELETE
 
                 Log.d(TAG, "callAdapter: post id ${it.id}")
+                Log.d(TAG, "callAdapter: $tokenn")
+
+                Common.retrofitServices.deletePostById(it.id , tokenn).enqueue(object : Callback<DeleteResponse>{
+                    override fun onResponse(
+                        call: Call<DeleteResponse>,
+                        response: Response<DeleteResponse>
+                    ) {
+
+                        Log.d(TAG, "onResponse: ${response.body()?.status.toString()}")
+                        if (response.body()?.status.toString() == "deleted") {
+                            Toast.makeText(requireContext(), "O'chirildi", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<DeleteResponse>, t: Throwable) {
+
+                        Log.d(TAG, "onFailure: ${t.message}")
+                        Toast.makeText(requireContext(), "Failed.", Toast.LENGTH_SHORT).show()
+                    }
+
+                })
             }
             adapter.onClick2 = {
                 // EDIT

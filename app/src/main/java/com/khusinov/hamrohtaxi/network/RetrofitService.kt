@@ -31,7 +31,7 @@ interface RetrofitService {
     fun createPost(@Body post2: Post2 , @Header("Authorization") token: String):Call<Post3>
 
     @DELETE("posts/{id}/")
-    fun deletePostById(@Path("id") id:Int , @Header("Authorization") token: String):Call<retrofit2.Response<Any>>
+    fun deletePostById(@Path("id") id:Int , @Header("Authorization") token: String):Call<DeleteResponse>
 
 
 
