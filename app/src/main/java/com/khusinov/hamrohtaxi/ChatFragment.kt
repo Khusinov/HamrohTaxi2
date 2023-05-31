@@ -112,6 +112,7 @@ class ChatFragment : Fragment(R.layout.fragment_chat) {
                         Toast.makeText(requireContext(), "Failed.", Toast.LENGTH_SHORT).show()
                     }
 
+
                 })
 
                 adapter.notifyItemRemoved(postList.size)
