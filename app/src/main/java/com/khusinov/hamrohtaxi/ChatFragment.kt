@@ -121,6 +121,12 @@ class ChatFragment : Fragment(R.layout.fragment_chat) {
                 // EDIT
                 Log.d(TAG, "callAdapter: ${it.id}")
 
+                val bundle = Bundle()
+
+                findNavController().navigate(R.id.action_chatFragment_to_newPostFragment , )
+
+
+
 
             }
 

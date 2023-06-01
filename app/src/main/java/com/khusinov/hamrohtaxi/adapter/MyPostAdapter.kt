@@ -56,6 +56,7 @@ class MyPostAdapter() : RecyclerView.Adapter<MyPostAdapter.PartOneViewHolder>() 
                 }
                 if (postCurrent.user_role == 1) {
                     hamrohKerakTv.text = "ta hamroh kerak"
+
                 }
 
                 deleteBtn.setOnClickListener {
