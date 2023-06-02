@@ -62,7 +62,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/profileUsername"
+                        android:id="@+id/username"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Shaxriyor"
@@ -70,7 +70,7 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/profilePhone"
+                        android:id="@+id/phone_number"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="+98942331705"
@@ -98,55 +98,6 @@
 
                 </LinearLayout>
 
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/lightGrey" />
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="@string/locations_and_payment"
-                android:textColor="@color/main_silver_dark"
-                android:textSize="16sp" />
-
-            <LinearLayout
-                android:id="@+id/profileMyAddress"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_margin="10dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingHorizontal="10dp">
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/outline_location_on_24"
-                    app:tint="@color/main_silver_dark" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="@string/my_address"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/baseline_arrow_forward_ios_24"
-                    app:tint="@color/main_silver_dark" />
             </LinearLayout>
 
             <View
@@ -247,6 +198,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_margin="10dp"
+                android:visibility="gone"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingHorizontal="10dp">
