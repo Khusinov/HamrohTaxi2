@@ -65,7 +65,7 @@
                         android:id="@+id/username"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Shaxriyor"
+                        android:text="Nomalum"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
 
@@ -73,7 +73,7 @@
                         android:id="@+id/phone_numbertv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="+98942331705"
+                        android:text="Nomalum"
                         android:textColor="@color/main_green"
                         android:textSize="18sp" />
 
