@@ -58,11 +58,18 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                     ) {
                         Log.d(TAG, "onResponse: ${response.message()} ")
                         if (response.isSuccessful && response.body()?.access != null) {
+                            var name = response.body()!!.user.name
+                            var phoneNumber = response.body()!!.user.phone_number
+
                             editor?.putString("access", response.body()?.access)
                             editor?.putString("login", "logged")
+                            editor?.putString("name", name)
+                            editor?.putString("phoneNumber", phoneNumber)
+
                             editor?.apply()
 
-                            Toast.makeText(requireContext(), "Muvaffaqqiyatli ", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), "Muvaffaqqiyatli ", Toast.LENGTH_SHORT)
+                                .show()
                             findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
                         }
                     }

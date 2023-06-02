@@ -70,7 +70,7 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/phone_number"
+                        android:id="@+id/phone_numbertv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="+98942331705"
