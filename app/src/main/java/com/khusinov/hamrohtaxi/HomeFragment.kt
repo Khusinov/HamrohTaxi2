@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.khusinov.hamrohtaxi.databinding.FragmentHomeBinding
+import com.khusinov.hamrohtaxi.models.MyPosts
 import com.khusinov.hamrohtaxi.models.Post
 import com.khusinov.hamrohtaxi.network.Common
 import retrofit2.Call
@@ -42,8 +43,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
 
             val postList = ArrayList<Post>()
-            Common.retrofitServices.getAllPosts().enqueue(object : Callback<List<Post>> {
-                override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
+            Common.retrofitServices.getAllPosts().enqueue(object : Callback<MyPosts> {
+                override fun onResponse(call: Call<MyPosts>, response: Response<MyPosts>) {
 
                     Log.d(TAG, "onResponse: posts ${response.isSuccessful}")
                     Log.d(TAG, "onResponse: posts ${response.body()}")
@@ -53,7 +54,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                         postsByDrivers.clear()
                         postsByPassengers.clear()
 
-                        val list = response.body()
+                        val list = response.body()?.results
                         if (list != null) {
                             for (i in list) {
                                 val user = i.user
@@ -98,9 +99,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
                 }
 
-                override fun onFailure(call: Call<List<Post>>, t: Throwable) {
+                override fun onFailure(call: Call<MyPosts>, t: Throwable) {
 
                     Log.d(TAG, "onFailure: ${t.message}")
+                    Log.d(TAG, "onFailure: ${t.cause}")
                 }
 
             })

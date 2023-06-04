@@ -77,7 +77,7 @@
 
                 <ImageView
                     style="@style/imageView"
-                    android:src="@drawable/baseline_person_24" />
+                    android:src="@drawable/baseline_access_time_24" />
 
                 <TextView
                     style="@style/textView"
@@ -95,7 +95,7 @@
 
                 <ImageView
                     style="@style/imageView"
-                    android:src="@drawable/baseline_person_24" />
+                    android:src="@drawable/baseline_attach_money_24" />
 
                 <TextView
                     style="@style/textView"

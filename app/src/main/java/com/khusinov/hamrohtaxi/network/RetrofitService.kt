@@ -16,7 +16,7 @@ interface RetrofitService {
     fun createCar(@Body car: Car, @Header("Authorization") token: String):Call<CarResponse>
 
     @GET("posts-list/")
-    fun getAllPosts():Call<List<Post>>
+    fun getAllPosts():Call<MyPosts>
 
     @GET("regions-list/")
     fun getRegions():Call<List<Region>>
@@ -33,7 +33,8 @@ interface RetrofitService {
     @DELETE("posts/{id}/")
     fun deletePostById(@Path("id") id:Int , @Header("Authorization") token: String):Call<DeleteResponse>
 
-
+    @PUT("posts/{id}/")
+    fun updatePostById(@Path("id") id:Int , @Header("Authorization") token:String):Call<Post3>
 
 
 
