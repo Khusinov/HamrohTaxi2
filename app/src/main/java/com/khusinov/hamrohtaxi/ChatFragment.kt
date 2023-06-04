@@ -1,5 +1,6 @@
 package com.khusinov.hamrohtaxi
 
+import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.khusinov.hamrohtaxi.adapter.MyPostAdapter
 import com.khusinov.hamrohtaxi.databinding.FragmentChatBinding
@@ -57,7 +59,7 @@ class ChatFragment : Fragment(R.layout.fragment_chat) {
                     if (response.isSuccessful && response.body()?.count != 0) {
 
                         val postList = response.body()?.results
-                        callAdapter(postList )
+                        callAdapter(postList)
 
                     }
 
@@ -94,26 +96,28 @@ class ChatFragment : Fragment(R.layout.fragment_chat) {
                 Log.d(TAG, "callAdapter: post id ${it.id}")
                 Log.d(TAG, "callAdapter: $tokenn")
 
-                Common.retrofitServices.deletePostById(it.id , tokenn).enqueue(object : Callback<DeleteResponse>{
-                    override fun onResponse(
-                        call: Call<DeleteResponse>,
-                        response: Response<DeleteResponse>
-                    ) {
+                Common.retrofitServices.deletePostById(it.id, tokenn)
+                    .enqueue(object : Callback<DeleteResponse> {
+                        override fun onResponse(
+                            call: Call<DeleteResponse>,
+                            response: Response<DeleteResponse>
+                        ) {
 
-                        Log.d(TAG, "onResponse: ${response.body()?.status.toString()}")
-                        if (response.body()?.status.toString() == "deleted") {
-                            Toast.makeText(requireContext(), "O'chirildi", Toast.LENGTH_SHORT).show()
+                            Log.d(TAG, "onResponse: ${response.body()?.status.toString()}")
+                            if (response.body()?.status.toString() == "deleted") {
+                                Toast.makeText(requireContext(), "O'chirildi", Toast.LENGTH_SHORT)
+                                    .show()
+                            }
                         }
-                    }
 
-                    override fun onFailure(call: Call<DeleteResponse>, t: Throwable) {
+                        override fun onFailure(call: Call<DeleteResponse>, t: Throwable) {
 
-                        Log.d(TAG, "onFailure: ${t.message}")
-                        Toast.makeText(requireContext(), "Failed.", Toast.LENGTH_SHORT).show()
-                    }
+                            Log.d(TAG, "onFailure: ${t.message}")
+                            Toast.makeText(requireContext(), "Failed.", Toast.LENGTH_SHORT).show()
+                        }
 
 
-                })
+                    })
 
                 adapter.notifyItemRemoved(postList.size)
             }
@@ -121,11 +125,20 @@ class ChatFragment : Fragment(R.layout.fragment_chat) {
                 // EDIT
                 Log.d(TAG, "callAdapter: ${it.id}")
 
-                val bundle = Bundle()
+                val sharedPref = context?.getSharedPreferences("HamrohTaxi", Context.MODE_PRIVATE)
+                val editor = sharedPref?.edit()
+                editor?.putString("id", "${it.id}")
+                editor?.putString("from_location", "${it.from_location}")
+                editor?.putString("to_location", "${it.to_location}")
+                editor?.putString("go_time", "${it.go_time}")
+                editor?.putString("price", "${it.price}")
+                editor?.putString("addition", "${it.addition}")
+                editor?.putString("count", "${it.count}")
+                editor?.putString("user_role", "${it.user_role}")
+                editor?.apply()
 
-                findNavController().navigate(R.id.action_chatFragment_to_newPostFragment , )
 
-
+                findNavController().navigate(R.id.action_chatFragment_to_updatePostFragment)
 
 
             }

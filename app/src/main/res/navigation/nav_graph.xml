@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_chatFragment_to_newPostFragment"
             app:destination="@id/newPostFragment" />
+        <action
+            android:id="@+id/action_chatFragment_to_updatePostFragment"
+            app:destination="@id/updatePostFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -86,4 +89,9 @@
             android:id="@+id/action_newPostFragment_to_chatFragment"
             app:destination="@id/chatFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/updatePostFragment"
+        android:name="com.khusinov.hamrohtaxi.UpdatePostFragment"
+        android:label="fragment_update_post"
+        tools:layout="@layout/fragment_update_post" />
 </navigation>
