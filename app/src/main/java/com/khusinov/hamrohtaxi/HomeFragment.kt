@@ -32,6 +32,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun setupUI() {
         binding.apply {
 
+            searchbar.setOnClickListener {
+                findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
+            }
+
             drivers.setOnCheckedChangeListener { buttonView, isChecked ->
                 if (isChecked)
                     callAdapter(postsByDrivers)

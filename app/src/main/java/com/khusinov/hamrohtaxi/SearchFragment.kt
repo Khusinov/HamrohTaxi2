@@ -1,5 +1,7 @@
 package com.khusinov.hamrohtaxi
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -83,6 +85,12 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
             rv.adapter = adapter
             adapter.submitList(postList1)
+
+            adapter.onClick = {
+                val dialIntent = Intent(Intent.ACTION_DIAL)
+                dialIntent.data = Uri.parse("tel:" + it.user.phone_number)
+                startActivity(dialIntent)
+            }
 
 
         }
