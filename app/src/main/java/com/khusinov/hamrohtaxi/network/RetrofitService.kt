@@ -36,6 +36,9 @@ interface RetrofitService {
     @PUT("posts/{id}/")
     fun updatePostById(@Path("id") id:Int, @Body post2: Post2 , @Header("Authorization") token:String):Call<Post3>
 
+    @GET("posts-list/")
+    fun search(@Query("search") searchKey:String) : Call<SearchResponse>
+
 
 
 

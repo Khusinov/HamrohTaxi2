@@ -132,8 +132,6 @@ class UpdatePostFragment : Fragment(R.layout.fragment_update_post) , DatePickerD
                 })
 
             }
-
-            
         }
 
     }
