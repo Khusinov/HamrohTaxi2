@@ -35,8 +35,16 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
             val sharedPref = context?.getSharedPreferences("HamrohTaxi", Context.MODE_PRIVATE)
             val editor = sharedPref?.edit()
-            editor?.putString("login", "notLogged")
+            // editor?.putString("login", "notLogged")
             editor?.apply()
+
+            var status = sharedPref?.getString("login", "notLogged").toString()
+//            if (status == "logged") {
+//                Toast.makeText(requireContext(), "Muvaffaqqiyatli ", Toast.LENGTH_SHORT)
+//                    .show()
+//              //  findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+//                Log.d(TAG, "setupUI: $status")
+//            }
 
 
             registerTv.setOnClickListener {
@@ -71,6 +79,12 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                             Toast.makeText(requireContext(), "Muvaffaqqiyatli ", Toast.LENGTH_SHORT)
                                 .show()
                             findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                        } else {
+                            Toast.makeText(
+                                requireContext(),
+                                "Internet bilan muammo",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     }
 
@@ -78,7 +92,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                         Log.d(TAG, "onFailure: ${t.message}")
                         Toast.makeText(
                             requireContext(),
-                            "Foydalanuvchi topilmadi. Qayta tekshiring.",
+                            "Foydalanuvchi topilmadi yoki Internet bilan muammo.",
                             Toast.LENGTH_SHORT
                         ).show()
                     }
