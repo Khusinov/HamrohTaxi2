@@ -41,7 +41,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     callAdapter(postsByDrivers)
             }
 
-            passangers.setOnCheckedChangeListener { buttonView, isChecked ->
+            passangers.setOnCheckedChangeListener {  buttonView, isChecked ->
                 if (isChecked)
                     callAdapter(postsByPassengers)
             }

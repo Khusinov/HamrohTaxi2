@@ -196,7 +196,6 @@ class NewPostFragment : Fragment(R.layout.fragment_new_post), DatePickerDialog.O
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
-                // Code to perform some action when nothing is selected
             }
         }
     }
@@ -225,7 +224,6 @@ class NewPostFragment : Fragment(R.layout.fragment_new_post), DatePickerDialog.O
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
-                // Code to perform some action when nothing is selected
             }
         }
     }
